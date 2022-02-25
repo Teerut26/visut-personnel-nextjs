@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image'
 
 export default function Cover() {
   return (
@@ -10,11 +11,9 @@ export default function Cover() {
             <div className="text-xl">โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี</div>
           </div>
         </div>
-        <img
-          className="w-full h-full object-cover object-top"
-          src="http://www.visut.ac.th/vs/wp-content/themes/NewComp/jdgallery/slides/2.jpg"
-          alt=""
-        />
+        <div style={{width: '100%', height: '100%', position: 'relative'}}>
+            <Image src="/2.jpg" alt="me" layout='fill' objectFit='cover' />
+        </div>
       </div>
     </div>
   );
