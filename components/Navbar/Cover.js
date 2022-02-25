@@ -11,9 +11,9 @@ export default function Cover() {
             <div className="text-xl">โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี</div>
           </div>
         </div>
-        <div style={{width: '100%', height: '100%', position: 'relative'}}>
-            <Image src="/2.jpg" alt="me" layout='fill' objectFit='cover' />
-        </div>
+        {/* <div style={{width: '100%', height: '100%', position: 'relative'}}> */}
+            <Image src="/2.jpg" alt="me" layout='fill' objectFit='cover'  />
+        {/* </div> */}
       </div>
     </div>
   );
