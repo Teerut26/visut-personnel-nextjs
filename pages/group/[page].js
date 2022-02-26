@@ -67,7 +67,7 @@ const List = ({ title, person }) => {
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 text-white w-full rounded-xl text-center text-md md:text-xl ">
           {title} {person.length !== 1 ? person.length+" คน" : ""}
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 justify-center py-3 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 justify-center py-3 ">
           {person.length === 1 ? (
             <div className="col-start-1 col-span-4">
               {person.map((item) => (

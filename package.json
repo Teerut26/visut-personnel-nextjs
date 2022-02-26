@@ -8,8 +8,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/client": "^3.1.0",
-    "@sanity/image-url": "^1.0.1",
     "@tanem/react-nprogress": "^4.0.8",
     "axios": "^0.26.0",
     "moment": "^2.29.1",
