@@ -13,7 +13,7 @@ function Navbar({navlists}) {
     <>
       <Cover />
       <div
-        className={`transform top-0 left-0 w-64 backdrop-blur-sm bg-blue-500/80 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-[99] flex flex-col p-2 gap-2 shadow ${
+        className={`transform top-0 left-0 w-64 backdrop-blur-sm bg-blue-500/80 fixed h-full overflow-auto ease-in-out transition-all duration-100 z-[99] flex flex-col p-2 gap-2 shadow ${
           ShowNav ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -45,7 +45,7 @@ function Navbar({navlists}) {
           <GroupNav title={"หน้าแรก"} link="/" />
           <div
             onClick={() => setShowNav(!ShowNav)}
-            className="flex items-center hover:bg-black/30 px-2 rounded-lg"
+            className="flex items-center hover:bg-black/30 px-2 rounded-lg cursor-pointer"
           >
             <BsFillGridFill />
           </div>
