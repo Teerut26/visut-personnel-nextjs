@@ -3,18 +3,11 @@ import Cover from "./Navbar/Cover";
 import Link from "next/link";
 import { useState } from "react";
 import { BsFillGridFill, BsHouse, BsRecordFill } from "react-icons/bs";
-import { client } from "../config/sanity";
 import { connect } from "react-redux";
 
 function Navbar({navlists}) {
   const [ShowNav, setShowNav] = useState(false);
   const [MenuLists, setMenuLists] = useState(navlists);
-//   useEffect(() => {
-//     (async () => {
-//       const result = await client.fetch(`*[_type == "group"]{title,slug}`, {});
-//       setMenuLists(result);
-//     })();
-//   }, []);
 
   return (
     <>
@@ -35,7 +28,7 @@ function Navbar({navlists}) {
             X
           </div>
         </div>
-        <div className="flex flex-col px-2 gap-2">
+        <div className="flex flex-col px-2 gap-2 ">
           <GroupNav title={"หน้าแรก"} link="/" icon={<BsHouse />} />
           {MenuLists.map((item, index) => (
             <GroupNav
@@ -48,7 +41,7 @@ function Navbar({navlists}) {
         </div>
       </div>
       <div className="p-3 text-xl bg-blue-400 text-white ">
-        <div className="max-w-5xl flex gap-2 mx-auto justify-between">
+        <div className="max-w-2xl flex gap-2 mx-auto justify-between">
           <GroupNav title={"หน้าแรก"} link="/" />
           <div
             onClick={() => setShowNav(!ShowNav)}
