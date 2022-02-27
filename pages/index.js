@@ -63,8 +63,8 @@ function Home({ nav_lists, personCount }) {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3lg mx-auto px-3 mb-3">
-          {nav_lists.map((item) => (
-            <div className=" p-3 flex flex-col justify-between items-center bg-blue-400 rounded-xl text-white">
+          {nav_lists.map((item,index) => (
+            <div key={index} className=" p-3 flex flex-col justify-between items-center bg-blue-400 rounded-xl text-white">
               <div className="text-lg">{item.title}</div>
               <div className="text-3xl">{item.person_count} คน</div>
             </div>

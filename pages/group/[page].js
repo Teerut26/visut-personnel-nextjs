@@ -3,6 +3,8 @@ import WithNavbar from "../../layouts/WithNavbar";
 import { useState } from "react";
 import axios from "axios";
 import Person from "../../components/group/Person";
+import Head from "next/head";
+import Helmet from "../../components/Helmet";
 
 export async function getServerSideProps(context) {
   const { page } = context.query;
@@ -34,16 +36,36 @@ export async function getServerSideProps(context) {
       `,
   });
 
-  console.log(data.data.currentPage);
+  let count = 0;
+  if (data.data.currentPage.length !== 0) {
+    data.data.currentPage[0].position.map((item) => {
+      count += item.person.length;
+    });
+  }
 
   return {
-    props: { nav_lists: data.data.allPage, Data: data.data.currentPage }, // will be passed to the page component as props
+    props: {
+      nav_lists: data.data.allPage,
+      Data: data.data.currentPage,
+      id: page,
+      person_count: count,
+    }, // will be passed to the page component as props
   };
 }
 
-export default function group({ nav_lists, Data }) {
+export default function group({ nav_lists, Data, id, person_count }) {
   return (
     <>
+      {Data.length !== 0 ? (
+        <Helmet
+          title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Data[0].title}`}
+          discription={`${Data[0].title} ${person_count} คน`}
+          image="/icon.svg"
+          url={`${process.env.NEXT_PUBLIC_BASE_URL}/group/${id}`}
+        />
+      ) : (
+        ""
+      )}
       <WithNavbar navlists={nav_lists} />
       {Data.length === 0 ? (
         <div className="flex justify-center items-center py-10">
@@ -73,12 +95,12 @@ const List = ({ title, person }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center py-3 ">
           {person.length === 1 ? (
             <div className="col-start-1 col-span-4">
-              {person.map((item,index) => (
+              {person.map((item, index) => (
                 <Person {...item} key={index} position={title} />
               ))}
             </div>
           ) : (
-            person.map((item,index) => (
+            person.map((item, index) => (
               <Person {...item} key={index} position={title} />
             ))
           )}

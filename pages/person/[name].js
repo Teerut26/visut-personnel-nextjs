@@ -3,10 +3,10 @@ import WithNavbar from "../../layouts/WithNavbar";
 import axios from "axios";
 import { builder } from "../../config/sanity";
 import moment from "moment";
+import Helmet from "../../components/Helmet";
 
 export async function getServerSideProps(context) {
   const { name } = context.query;
-  console.log(name);
   let { data } = await axios.post(process.env.NEXT_PUBLIC_GRAPHQL_BASE_URL, {
     query: `{
           allPage(where:{}){
@@ -28,15 +28,30 @@ export async function getServerSideProps(context) {
   });
 
   return {
-    props: { nav_lists: data.data.allPage, Person: data.data.Person }, // will be passed to the page component as props
+    props: { nav_lists: data.data.allPage, Person: data.data.Person, id: name }, // will be passed to the page component as props
   };
 }
 
-export default function person({ nav_lists, Person }) {
-  console.log(Person);
+export default function person({ nav_lists, Person, id }) {
   moment.locale("th");
   return (
     <>
+      {Person !== null ? (
+        <Helmet
+          title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Person.name}`}
+          discription={`${Data[0].title} ${person_count} คน`}
+          image={
+            Person.avatar !== null
+              ? builder.image(Person.avatar).width(300)
+              : "/icon.svg"
+          }
+          url={`${process.env.NEXT_PUBLIC_BASE_URL}/person/${id}`}
+        />
+      ) : (
+       
+        ""
+      )}
+
       <WithNavbar navlists={nav_lists}>
         {Person !== null ? (
           <div className="w-full flex flex-col  gap-5 justify-center py-10 px-3">
