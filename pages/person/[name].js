@@ -36,7 +36,7 @@ export default function person({ nav_lists, Person, id }) {
   moment.locale("th");
   return (
     <>
-      {Person !== null ? (
+      {/* {Person !== null ? (
         <Helmet
           title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Person.name}`}
           discription={`${Person.name}`}
@@ -50,7 +50,7 @@ export default function person({ nav_lists, Person, id }) {
       ) : (
        
         ""
-      )}
+      )} */}
 
       <WithNavbar navlists={nav_lists}>
         {Person !== null ? (
