@@ -6,3 +6,18 @@
 *{
     font-family: 'Prompt', sans-serif;
 }
+
+::-webkit-scrollbar{
+	width: 8px;
+    
+}
+
+::-webkit-scrollbar-track-piece{
+	background-color: rgba(255, 255, 255, 0.137);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #ffffff73;
+    border-radius: 10px;
+}

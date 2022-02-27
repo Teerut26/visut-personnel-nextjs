@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Cover from "./Navbar/Cover";
 import Link from "next/link";
 import { useState } from "react";
-import {  BsRecordFill } from "react-icons/bs";
-import { MdHome,MdLogin,MdMenu } from "react-icons/md";
+import { BsRecordFill } from "react-icons/bs";
+import { MdHome, MdLogin, MdMenu } from "react-icons/md";
 import { connect } from "react-redux";
 
 function Navbar({ navlists }) {
@@ -13,6 +13,10 @@ function Navbar({ navlists }) {
   return (
     <>
       <Cover />
+      <div onClick={() => setShowNav(!ShowNav)} className={`z-10 fixed ${ShowNav ? "block" : "hidden"} inset-0 transition-opacity`}>
+        <div tabIndex={0} className="absolute inset-0 bg-black opacity-50" />
+      </div>
+
       <div
         className={`transform top-0  left-0 w-64 backdrop-blur-sm bg-blue-500/80 fixed h-full overflow-auto ease-in-out transition-all duration-100 z-[99] flex flex-col p-2 gap-2 shadow ${
           ShowNav ? "translate-x-0" : "-translate-x-full"
@@ -29,9 +33,13 @@ function Navbar({ navlists }) {
             X
           </div>
         </div>
-        <div className="flex flex-col px-2 gap-2">
+        <div className="flex flex-col px-2 gap-2 overflow-y-auto">
           <GroupNav title={"หน้าแรก"} link="/" icon={<MdHome />} />
-          <GroupNav title={"เข้าสู่ระบบ"} link={process.env.NEXT_PUBLIC_SANITY_MANAGE_URL} icon={<MdLogin />} />
+          <GroupNav
+            title={"เข้าสู่ระบบ"}
+            link={process.env.NEXT_PUBLIC_SANITY_MANAGE_URL}
+            icon={<MdLogin />}
+          />
           {MenuLists.map((item, index) => (
             <GroupNav
               title={item.title}
@@ -45,7 +53,9 @@ function Navbar({ navlists }) {
       <div className="p-3 text-xl border-b">
         <div className="max-w-2xl flex gap-2 mx-auto justify-between">
           <Link href="/">
-            <div className="hover:bg-black/30 px-3 py-2 rounded-lg select-none">หน้าแรก</div>
+            <div className="hover:bg-black/30 px-3 py-2 rounded-lg select-none">
+              หน้าแรก
+            </div>
           </Link>
           <div
             onClick={() => setShowNav(!ShowNav)}
