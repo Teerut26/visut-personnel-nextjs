@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import Cover from "./Navbar/Cover";
 import Link from "next/link";
 import { useState } from "react";
-import { BsFillGridFill, BsHouse, BsRecordFill } from "react-icons/bs";
+import {  BsRecordFill } from "react-icons/bs";
+import { MdHome,MdLogin,MdMenu } from "react-icons/md";
 import { connect } from "react-redux";
 
 function Navbar({ navlists }) {
@@ -29,7 +30,8 @@ function Navbar({ navlists }) {
           </div>
         </div>
         <div className="flex flex-col px-2 gap-2">
-          <GroupNav title={"หน้าแรก"} link="/" icon={<BsHouse />} />
+          <GroupNav title={"หน้าแรก"} link="/" icon={<MdHome />} />
+          <GroupNav title={"เข้าสู่ระบบ"} link={process.env.NEXT_PUBLIC_SANITY_MANAGE_URL} icon={<MdLogin />} />
           {MenuLists.map((item, index) => (
             <GroupNav
               title={item.title}
@@ -49,7 +51,7 @@ function Navbar({ navlists }) {
             onClick={() => setShowNav(!ShowNav)}
             className="flex items-center hover:bg-black/30  px-2 rounded-lg cursor-pointer"
           >
-            <BsFillGridFill />
+            <MdMenu />
           </div>
         </div>
       </div>
