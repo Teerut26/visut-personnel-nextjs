@@ -64,18 +64,23 @@ export default function group({ nav_lists, Data, id, person_count }) {
       ) : (
         ""
       )}
-      <WithNavbar navlists={nav_lists} >
-      {Data.length === 0 ? (
-        <div className="flex justify-center items-center py-10">
-          <div className="text-4xl">Not Found</div>
+      <WithNavbar navlists={nav_lists}>
+        <div className="py-5 flex flex-col justify-center items-center">
+          <div className="text-3xl">{Data.length !== 0 ? Data[0].title : ""}</div>
         </div>
-      ) : (
-        <div className="flex flex-col justify-center items-start w-full p-2 gap-5 max-w-6xl mx-auto">
-          {Data[0].position.map((item, index) => (
-            <List {...item} key={index} />
-          ))}
-        </div>
-      )}
+        {Data.length === 0 ? (
+          <div className="flex justify-center items-center py-10">
+            <div className="text-4xl">Not Found</div>
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-col justify-center items-start w-full p-2 gap-5 max-w-6xl mx-auto">
+              {Data[0].position.map((item, index) => (
+                <List {...item} key={index} />
+              ))}
+            </div>
+          </>
+        )}
       </WithNavbar>
     </>
   );
