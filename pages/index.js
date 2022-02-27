@@ -52,23 +52,28 @@ function Home({ nav_lists, personCount }) {
   return (
     <>
       <WithNavbar navlists={nav_lists}>
-        <div className="flex justify-center gap-3 py-5">
-          <div className="w-[10rem] h-[10rem] border-2 rounded-full flex flex-col justify-center items-center bg-blue-400 text-white">
-            <div className="text-3xl font-bold">{personCount}</div>
-            <div>บุคลากรทั้งหมด</div>
-          </div>
-          <div className="w-[10rem] h-[10rem] border-2 rounded-full flex flex-col justify-center items-center bg-blue-400 text-white">
-            <div className="text-3xl font-bold">{nav_lists.length}</div>
-            <div>กลุ่มสาระ</div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3lg mx-auto px-3 mb-3">
-          {nav_lists.map((item,index) => (
-            <div key={index} className=" p-3 flex flex-col justify-between items-center bg-blue-400 rounded-xl text-white">
-              <div className="text-lg">{item.title}</div>
-              <div className="text-3xl">{item.person_count} คน</div>
+        <div className="max-w-5xl mx-auto select-none">
+          <div className="flex justify-center gap-3 py-5">
+            <div className="w-[10rem] h-[10rem] border-2 rounded-full flex flex-col justify-center items-center bg-blue-400 text-white shadow-lg">
+              <div className="text-5xl font-bold">{personCount}</div>
+              <div>บุคลากรทั้งหมด</div>
             </div>
-          ))}
+            <div className="w-[10rem] h-[10rem] border-2 rounded-full flex flex-col justify-center items-center bg-blue-400 text-white shadow-lg">
+              <div className="text-5xl font-bold">{nav_lists.length}</div>
+              <div>กลุ่มสาระ</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3lg mx-auto px-3 mb-3">
+            {nav_lists.map((item, index) => (
+              <div
+                key={index}
+                className=" p-3 flex flex-col justify-between items-center bg-blue-400 rounded-xl text-white shadow-lg"
+              >
+                <div className="text-lg">{item.title}</div>
+                <div className="text-4xl">{item.person_count} คน</div>
+              </div>
+            ))}
+          </div>
         </div>
       </WithNavbar>
     </>

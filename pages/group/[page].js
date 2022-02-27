@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import WithNavbar from "../../layouts/WithNavbar";
-import { useState } from "react";
 import axios from "axios";
 import Person from "../../components/group/Person";
-import Head from "next/head";
 import Helmet from "../../components/Helmet";
 
 export async function getServerSideProps(context) {
@@ -66,18 +64,19 @@ export default function group({ nav_lists, Data, id, person_count }) {
       ) : (
         ""
       )}
-      <WithNavbar navlists={nav_lists} />
+      <WithNavbar navlists={nav_lists} >
       {Data.length === 0 ? (
         <div className="flex justify-center items-center py-10">
           <div className="text-4xl">Not Found</div>
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-start w-full p-2 gap-3 max-w-6xl mx-auto">
+        <div className="flex flex-col justify-center items-start w-full p-2 gap-5 max-w-6xl mx-auto">
           {Data[0].position.map((item, index) => (
             <List {...item} key={index} />
           ))}
         </div>
       )}
+      </WithNavbar>
     </>
   );
 }
@@ -92,7 +91,7 @@ const List = ({ title, person }) => {
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 text-white w-full rounded-xl text-center text-md md:text-xl select-none">
           {title} {person.length !== 1 ? person.length + " คน" : ""}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center py-3 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center py-3">
           {person.length === 1 ? (
             <div className="col-start-1 col-span-4">
               {person.map((item, index) => (
