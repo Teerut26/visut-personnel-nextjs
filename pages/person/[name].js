@@ -39,7 +39,7 @@ export default function person({ nav_lists, Person, id }) {
       {Person !== null ? (
         <Helmet
           title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Person.name}`}
-          discription={`${Data[0].title} ${person_count} คน`}
+          discription={`${Person.name}`}
           image={
             Person.avatar !== null
               ? builder.image(Person.avatar).width(300)

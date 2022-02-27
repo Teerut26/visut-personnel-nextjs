@@ -58,7 +58,7 @@ export default function group({ nav_lists, Data, id, person_count }) {
     <>
       {Data.length !== 0 ? (
         <Helmet
-          title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Data[0].title}`}
+          title={`บุคลากร โรงเรียนวิสุทธรังษี จังหวัดกาญจนบุรี - ${Data[0].title} - ${person_count} คน`}
           discription={`${Data[0].title} ${person_count} คน`}
           image="/icon.svg"
           url={`${process.env.NEXT_PUBLIC_BASE_URL}/group/${id}`}
