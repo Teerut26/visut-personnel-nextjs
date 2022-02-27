@@ -31,12 +31,18 @@ export default function Person({
           `}
         </style>
         <div className="flex justify-center ">
-          {avatar !== null ? (
-            <img
-              className="rounded-full w-[12rem] drop-shadow-xl"
-              src={builder.image(avatar).width(300)}
-              alt={name}
-            />
+          {typeof avatar != "undefined" ? (
+            avatar !== null ? (
+              <img
+                className="rounded-full w-[12rem] drop-shadow-xl"
+                src={builder.image(avatar).width(300)}
+                alt={name}
+              />
+            ) : (
+              <div className="w-[12rem] h-[12rem] flex flex-col text-white bg-gray-500 justify-center items-center border-2 rounded-full">
+                NO PHOTO
+              </div>
+            )
           ) : (
             <div className="w-[12rem] h-[12rem] flex flex-col text-white bg-gray-500 justify-center items-center border-2 rounded-full">
               NO PHOTO
@@ -44,10 +50,14 @@ export default function Person({
           )}
         </div>
         <div className="flex flex-col mt-3 h-full w-full rounded-lg max-w-sm mx-auto ">
-          <div className="text-center text-sm font-bold drop-shadow-md">{name}</div>
+          <div className="text-center text-sm font-bold drop-shadow-md">
+            {name}
+          </div>
           <div className="text-center text-sm drop-shadow-md">- {position}</div>
           {position_more !== null ? (
-            <div className="text-center text-sm drop-shadow-md">- {position_more}</div>
+            <div className="text-center text-sm drop-shadow-md">
+              - {position_more}
+            </div>
           ) : (
             ""
           )}
